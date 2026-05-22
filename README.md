@@ -8,7 +8,7 @@ The tool replicates and extends the methodology of **Dr. Farai Chigaru's UNDP aw
 
 ## Live Demo
 
-🌐 **Deployed at:** (https://.steven-m-dot.github.io/AISA-AI/)
+🌐 **Deployed at:** https://aisa-8kkl-dqxfq0fm1-steven-m-dots-projects.vercel.app/
 
 ## Features
 
