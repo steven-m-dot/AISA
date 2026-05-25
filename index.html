@@ -532,7 +532,7 @@ body {
     <li><a class="tab-link" data-page="policy-page">📋 <span>Policy Lab</span></a></li>
   </ul>
   <div class="topbar-right">
-    <div class="ai-pill"><div class="dot-live"></div> Claude-Powered</div>
+    <div class="ai-pill"><div class="dot-live"></div> AI-Powered</div>
   </div>
 </nav>
 
@@ -1015,47 +1015,42 @@ AI PROJECTION
 
   try {
     const resp = await fetch("https://api.anthropic.com/v1/messages", {
-      method:"POST",
-      headers:{"Content-Type":"application/json"},
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        model:"claude-sonnet-4-20250514",
-        max_tokens:1000,
-        stream:true,
-        messages:[{role:"user",content:prompt}]
+        model: "claude-sonnet-4-20250514",
+        max_tokens: 1200,
+        messages: [{ role: "user", content: prompt }]
       })
     });
 
-    const reader = resp.body.getReader();
-    const dec = new TextDecoder();
-    let fullText = "";
-    document.getElementById("policyBody").innerHTML = `<div class="streamed-text" id="streamTarget"></div>`;
-    const target = document.getElementById("streamTarget");
-
-    while (true) {
-      const {value, done} = await reader.read();
-      if (done) break;
-      const chunk = dec.decode(value);
-      const lines = chunk.split("\n");
-      for (const line of lines) {
-        if (!line.startsWith("data:")) continue;
-        const raw = line.slice(5).trim();
-        if (raw === "[DONE]") continue;
-        try {
-          const ev = JSON.parse(raw);
-          if (ev.type === "content_block_delta" && ev.delta?.text) {
-            fullText += ev.delta.text;
-            target.textContent = fullText;
-          }
-        } catch {}
-      }
+    if (!resp.ok) {
+      const errJson = await resp.json().catch(() => ({}));
+      throw new Error(errJson?.error?.message || `HTTP ${resp.status}`);
     }
 
+    const data2 = await resp.json();
+    const fullText = (data2.content || []).map(b => b.text || "").join("");
+
     lastPolicyText = fullText;
-    renderFormattedPolicy(fullText, name, data);
-    syncPolicyLab(name, data, fullText);
+
+    // Animate text appearance
+    document.getElementById("policyBody").innerHTML = `<div class="streamed-text" id="streamTarget"></div>`;
+    const target = document.getElementById("streamTarget");
+    let i = 0;
+    const step = Math.ceil(fullText.length / 120);
+    const ticker = setInterval(() => {
+      i = Math.min(i + step, fullText.length);
+      target.textContent = fullText.slice(0, i);
+      if (i >= fullText.length) {
+        clearInterval(ticker);
+        renderFormattedPolicy(fullText, name, data);
+        syncPolicyLab(name, data, fullText);
+      }
+    }, 16);
 
   } catch(err) {
-    document.getElementById("policyBody").innerHTML = `<div style="color:var(--red);padding:1rem;font-size:0.85rem;">⚠ API error: ${err.message}. Ensure the Anthropic API key is configured.</div>`;
+    document.getElementById("policyBody").innerHTML = `<div style="color:var(--red);padding:1rem;font-size:0.85rem;">⚠ Error: ${err.message}</div>`;
   }
 });
 
