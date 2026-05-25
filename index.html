@@ -1,218 +1,1251 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>AISA·AI | Comparative Advantage &amp; Investment Intelligence</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-    <link href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: #f0f4f8; color: #0a2b3c; line-height: 1.5; }
-        .container { max-width: 1480px; margin: 0 auto; padding: 0 2rem; }
-        .navbar { background: #0a2b3c; color: white; padding: 1rem 0; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(8px); }
-        .nav-flex { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
-        .logo h1 { font-size: 1.75rem; font-weight: 700; letter-spacing: -0.5px; }
-        .logo span { color: #5bc0be; }
-        .nav-links { display: flex; gap: 2rem; list-style: none; }
-        .nav-links a { color: #e2e8f0; text-decoration: none; font-weight: 500; cursor: pointer; transition: 0.3s; }
-        .nav-links a:hover, .nav-links a.active { color: #5bc0be; border-bottom: 3px solid #5bc0be; padding-bottom: 4px; }
-        
-        .hero { background: linear-gradient(135deg, #0f2f3f 0%, #1c4e5e 100%); color: white; padding: 3.5rem 0; }
-        .section-title { font-size: 1.85rem; font-weight: 700; margin: 2rem 0 1.2rem; color: #0f2f3f; border-left: 6px solid #5bc0be; padding-left: 1.2rem; }
-        .card { background: white; border-radius: 24px; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.06); border: 1px solid #d4e7ed; margin-bottom: 2.5rem; }
-        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 2rem; }
-        .btn-primary { background: #0f2f3f; color: white; padding: 0.9rem 2rem; border-radius: 50px; font-weight: 600; border: none; cursor: pointer; transition: all 0.3s; }
-        .btn-primary:hover { background: #5bc0be; color: #0a2b3c; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(91,192,190,0.3); }
-        .btn-premium { background: linear-gradient(90deg, #5bc0be, #0f2f3f); color: white; }
-        .btn-pdf { background: #dc2626; }
-        
-        select, input { width: 100%; padding: 14px 16px; border-radius: 16px; border: 1px solid #cbd5e1; margin-bottom: 1rem; font-size: 1rem; }
-        .rca-badge { padding: 0.35rem 1rem; border-radius: 30px; font-size: 0.8rem; font-weight: 700; }
-        .insight-block { background: #eef2fa; border-left: 6px solid #5bc0be; padding: 1.6rem; border-radius: 20px; margin: 1.2rem 0; }
-        .ai-insight { background: linear-gradient(90deg, #f0fdf4, #ecfdf5); border-left-color: #10b981; }
-        .data-source { font-size: 0.75rem; color: #64748b; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e2e8f0; }
-        .premium-tag { background: #fef3c7; color: #854d0e; padding: 2px 10px; border-radius: 9999px; font-size: 0.7rem; font-weight: 600; }
-        
-        .investment-score { font-size: 2.2rem; font-weight: 700; color: #0f2f3f; }
-        .confidence-bar { height: 6px; background: #e2e8f0; border-radius: 999px; margin: 8px 0; }
-        .confidence-fill { height: 100%; background: linear-gradient(90deg, #5bc0be, #0ea5e9); border-radius: 999px; }
-        
-        footer { background: #0a1e2c; color: #9bb7c4; padding: 2.5rem 0; text-align: center; }
-        @media (max-width: 768px) { .container { padding: 0 1rem; } .grid-2 { grid-template-columns: 1fr; } }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AISA·AI — Comparative Advantage Engine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+:root {
+  --ink: #0d1117;
+  --ink2: #1e2937;
+  --ink3: #374151;
+  --muted: #6b7280;
+  --subtle: #9ca3af;
+  --border: #e5e7eb;
+  --border2: #f3f4f6;
+  --surface: #ffffff;
+  --surface2: #f9fafb;
+  --surface3: #f3f4f6;
+  --accent: #0ea5e9;
+  --accent2: #0284c7;
+  --accent-bg: #f0f9ff;
+  --accent-border: #bae6fd;
+  --green: #059669;
+  --green-bg: #ecfdf5;
+  --green-border: #a7f3d0;
+  --amber: #d97706;
+  --amber-bg: #fffbeb;
+  --amber-border: #fde68a;
+  --red: #dc2626;
+  --red-bg: #fef2f2;
+  --red-border: #fecaca;
+  --radius: 12px;
+  --radius-lg: 20px;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { font-size:16px; }
+body {
+  font-family: 'Syne', sans-serif;
+  background: var(--surface2);
+  color: var(--ink);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── TOPBAR ── */
+.topbar {
+  background: var(--ink);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  height: 58px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid #1e2937;
+}
+.logo {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.logo-mark {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.4rem;
+  color: #fff;
+  letter-spacing: -0.5px;
+}
+.logo-mark span { color: var(--accent); }
+.logo-sub {
+  font-size: 0.65rem;
+  color: #6b7280;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.nav-tabs {
+  display: flex;
+  gap: 0;
+  list-style: none;
+}
+.nav-tabs li a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 1.1rem;
+  height: 58px;
+  color: #9ca3af;
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-bottom: 3px solid transparent;
+  transition: all 0.15s;
+  cursor: pointer;
+}
+.nav-tabs li a:hover { color: #e5e7eb; }
+.nav-tabs li a.active { color: var(--accent); border-bottom-color: var(--accent); }
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.ai-pill {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: #1e2937;
+  border: 1px solid #374151;
+  border-radius: 20px;
+  padding: 4px 10px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.05em;
+}
+.dot-live { width:6px; height:6px; border-radius:50%; background:#34d399; animation: pulse-dot 2s infinite; }
+@keyframes pulse-dot { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+/* ── LAYOUT ── */
+.page { display:none; }
+.page.active { display:block; }
+.main-wrap {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 0;
+  min-height: calc(100vh - 58px);
+}
+
+/* ── SIDEBAR ── */
+.sidebar {
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  position: sticky;
+  top: 58px;
+  height: calc(100vh - 58px);
+  overflow-y: auto;
+}
+.sidebar-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--subtle);
+  margin-bottom: 6px;
+}
+.search-wrap { position: relative; }
+.search-input {
+  width: 100%;
+  padding: 10px 14px 10px 36px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-family: 'Syne', sans-serif;
+  font-size: 0.85rem;
+  background: var(--surface2);
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.15s;
+}
+.search-input:focus { border-color: var(--accent); background: var(--surface); }
+.search-icon {
+  position: absolute;
+  left: 11px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--subtle);
+  font-size: 0.85rem;
+}
+.country-list {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  max-height: 300px;
+  overflow-y: auto;
+  display: none;
+  position: absolute;
+  width: 100%;
+  z-index: 50;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  top: calc(100% + 4px);
+}
+.country-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 14px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  border-bottom: 1px solid var(--border2);
+  transition: background 0.1s;
+}
+.country-item:hover { background: var(--surface2); }
+.country-item:last-child { border-bottom: none; }
+.c-flag { font-size: 1.1rem; }
+.c-type-pill {
+  margin-left: auto;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 10px;
+}
+.type-labor { background: var(--green-bg); color: var(--green); }
+.type-capital { background: var(--accent-bg); color: var(--accent2); }
+.type-resource { background: var(--amber-bg); color: var(--amber); }
+.type-balanced { background: var(--surface3); color: var(--ink3); }
+
+.profile-card {
+  background: var(--ink);
+  border-radius: var(--radius-lg);
+  padding: 1.2rem;
+  color: #fff;
+}
+.profile-country-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.5rem;
+  letter-spacing: -0.5px;
+  margin-bottom: 4px;
+}
+.profile-meta {
+  font-size: 0.72rem;
+  color: #9ca3af;
+  margin-bottom: 1rem;
+}
+.stat-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+.stat-box {
+  background: #1e2937;
+  border-radius: 10px;
+  padding: 8px 10px;
+}
+.stat-label { font-size:0.6rem; color:#6b7280; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; }
+.stat-value { font-size:1rem; font-weight:700; color:#f9fafb; font-family:'DM Mono', monospace; }
+.stat-unit { font-size:0.65rem; color:#9ca3af; }
+
+.endowment-block {
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  border-radius: var(--radius);
+  padding: 1rem;
+  font-size: 0.82rem;
+  color: var(--ink3);
+  line-height: 1.55;
+}
+.endowment-title {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent2);
+  margin-bottom: 6px;
+}
+
+/* ── MAIN PANEL ── */
+.main-panel {
+  padding: 2rem;
+  overflow-y: auto;
+}
+.section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.2rem;
+}
+.section-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.4rem;
+  letter-spacing: -0.3px;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-family: 'Syne', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: none;
+  transition: all 0.15s;
+}
+.btn-primary { background: var(--ink); color: #fff; }
+.btn-primary:hover { background: var(--ink2); transform: translateY(-1px); }
+.btn-accent { background: var(--accent); color: #fff; }
+.btn-accent:hover { background: var(--accent2); }
+.btn-ghost { background: transparent; color: var(--ink3); border: 1px solid var(--border); }
+.btn-ghost:hover { background: var(--surface3); }
+.btn-danger { background: #dc2626; color: #fff; }
+.btn-danger:hover { background: #b91c1c; }
+
+/* ── RCA GRID ── */
+.rca-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; margin-bottom:1.5rem; }
+.rca-column-title {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.rca-dot { width:8px; height:8px; border-radius:50%; }
+.dot-green { background: var(--green); }
+.dot-amber { background: var(--amber); }
+
+.rca-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 10px 14px;
+  margin-bottom: 8px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.rca-item:hover { border-color: var(--accent-border); box-shadow: 0 2px 8px rgba(14,165,233,0.08); }
+.rca-row { display:flex; align-items:center; justify-content:space-between; gap:8px; }
+.rca-name { font-size:0.83rem; font-weight:600; color:var(--ink2); }
+.rca-score {
+  font-family: 'DM Mono', monospace;
+  font-size:0.82rem;
+  font-weight:500;
+  padding: 2px 8px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+.score-very-high { background:#064e3b; color:#34d399; }
+.score-high { background: var(--green-bg); color: var(--green); }
+.score-medium { background: var(--amber-bg); color: var(--amber); }
+.score-latent { background: var(--accent-bg); color: var(--accent2); }
+.rca-bar-wrap { height:3px; background:var(--border2); border-radius:2px; margin-top:6px; overflow:hidden; }
+.rca-bar { height:100%; border-radius:2px; background: linear-gradient(90deg, var(--accent), var(--green)); }
+.rca-meta { font-size:0.68rem; color:var(--subtle); margin-top:4px; }
+
+/* ── BENCHMARK CARD ── */
+.benchmark-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(200px,1fr)); gap:1rem; margin-bottom:1.5rem; }
+.benchmark-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem;
+}
+.bench-name { font-size:0.9rem; font-weight:700; margin-bottom:6px; }
+.bench-gdp { font-family:'DM Mono',monospace; font-size:1.1rem; font-weight:500; color: var(--accent); margin-bottom: 4px; }
+.bench-row { font-size:0.72rem; color:var(--muted); }
+
+/* ── AI POLICY PANEL ── */
+.ai-panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+.ai-panel-header {
+  background: var(--ink);
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.ai-panel-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.1rem;
+  color: #fff;
+}
+.ai-panel-body { padding: 1.5rem; }
+
+.giff-step {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.4rem;
+  padding-bottom: 1.4rem;
+  border-bottom: 1px solid var(--border2);
+  align-items: flex-start;
+}
+.giff-step:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.step-num {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-family: 'DM Mono', monospace;
+}
+.step-content { flex: 1; }
+.step-title { font-size:0.85rem; font-weight:700; color:var(--ink); margin-bottom:4px; }
+.step-text { font-size:0.82rem; color:var(--ink3); line-height:1.6; }
+
+/* ── LOADING/STREAMING ── */
+.ai-loading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 1.5rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.typing-dots span {
+  display: inline-block;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  margin: 0 2px;
+  animation: typing 1.2s infinite;
+}
+.typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+.typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes typing { 0%,80%,100%{transform:scale(0.6);opacity:0.4} 40%{transform:scale(1);opacity:1} }
+
+.streamed-text { font-size:0.85rem; color:var(--ink3); line-height:1.7; white-space:pre-wrap; }
+
+/* ── CHART SECTION ── */
+.chart-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.chart-title { font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); margin-bottom:1rem; }
+
+/* ── GLOBAL TABLE PAGE ── */
+.table-page { padding: 2rem; }
+.data-table-wrap { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-lg); overflow:hidden; }
+.data-table-header { padding:1.2rem 1.5rem; border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; }
+.data-table { width:100%; border-collapse:collapse; font-size:0.82rem; }
+.data-table th { padding:10px 14px; text-align:left; font-size:0.65rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--subtle); background:var(--surface2); border-bottom:1px solid var(--border); }
+.data-table td { padding:10px 14px; border-bottom:1px solid var(--border2); color:var(--ink2); }
+.data-table tr:hover td { background:var(--surface2); cursor:pointer; }
+.data-table tr:last-child td { border-bottom:none; }
+.mono { font-family:'DM Mono',monospace; }
+.search-bar-table {
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: 'Syne', sans-serif;
+  font-size: 0.82rem;
+  outline: none;
+  width: 240px;
+}
+.search-bar-table:focus { border-color: var(--accent); }
+.tbl-pill {
+  display:inline-block; padding:2px 8px; border-radius:8px;
+  font-size:0.62rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em;
+}
+
+/* ── POLICY LAB PAGE ── */
+.policy-page { padding: 2rem; }
+.policy-header {
+  background: var(--ink);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  color: #fff;
+  margin-bottom: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.policy-header::before {
+  content:'';
+  position:absolute; top:-40px; right:-40px;
+  width:220px; height:220px;
+  border-radius:50%;
+  background: radial-gradient(circle, rgba(14,165,233,0.15) 0%, transparent 70%);
+  pointer-events:none;
+}
+.policy-title { font-family:'DM Serif Display',serif; font-size:2rem; margin-bottom:6px; }
+.policy-subtitle { font-size:0.82rem; color:#9ca3af; }
+
+.source-note {
+  font-size:0.68rem;
+  color:var(--subtle);
+  padding-top:0.8rem;
+  border-top:1px solid var(--border2);
+  margin-top:0.8rem;
+}
+
+/* ── EMPTY STATE ── */
+.empty-state {
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  padding:4rem 2rem; gap:1rem; color:var(--subtle); text-align:center;
+}
+.empty-icon { font-size:2.5rem; }
+.empty-title { font-family:'DM Serif Display',serif; font-size:1.4rem; color:var(--ink3); }
+.empty-sub { font-size:0.85rem; max-width:300px; line-height:1.6; }
+
+/* ── RESPONSIVE ── */
+@media (max-width:900px) {
+  .main-wrap { grid-template-columns:1fr; }
+  .sidebar { position:static; height:auto; }
+  .rca-grid { grid-template-columns:1fr; }
+}
+@media (max-width:600px) {
+  .nav-tabs li a span { display:none; }
+  .topbar { padding:0 1rem; }
+  .main-panel, .table-page, .policy-page { padding:1rem; }
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width:5px; height:5px; }
+::-webkit-scrollbar-track { background:transparent; }
+::-webkit-scrollbar-thumb { background:var(--border); border-radius:3px; }
+</style>
 </head>
 <body>
 
-<nav class="navbar">
-    <div class="container nav-flex">
-        <div class="logo"><h1>AISA<span>·AI</span></h1><div style="font-size:0.75rem; opacity:0.9;">Comparative Advantage • Investment Intelligence • New Structural Economics</div></div>
-        <ul class="nav-links">
-            <li><a class="tab-link active" data-tab="tab1">🎯 RCA + Investment Engine</a></li>
-            <li><a class="tab-link" data-tab="tab2">🌍 Global Intelligence</a></li>
-            <li><a class="tab-link" data-tab="tab3">📋 GIFF Policy Lab</a></li>
-            <li><a class="tab-link" data-tab="tab4">💰 Monetization Hub</a></li>
-        </ul>
-    </div>
+<nav class="topbar">
+  <div class="logo">
+    <div class="logo-mark">AISA<span>·AI</span></div>
+    <div class="logo-sub">Comparative Advantage Engine</div>
+  </div>
+  <ul class="nav-tabs">
+    <li><a class="tab-link active" data-page="rca-page">🎯 <span>RCA Engine</span></a></li>
+    <li><a class="tab-link" data-page="data-page">🌍 <span>Global Data</span></a></li>
+    <li><a class="tab-link" data-page="policy-page">📋 <span>Policy Lab</span></a></li>
+  </ul>
+  <div class="topbar-right">
+    <div class="ai-pill"><div class="dot-live"></div> Claude-Powered</div>
+  </div>
 </nav>
 
-<main>
-    <!-- Tab 1: Enhanced RCA + Investment Engine -->
-    <div id="tab1" class="tab-content active-tab">
-        <header class="hero">
-            <div class="container">
-                <h2>Revealed Comparative Advantage + AI Investment Engine</h2>
-                <p>Real-time Balassa RCA • Factor Endowments • AI-Powered Opportunity Scoring • Business Model Recommendations</p>
-                <span class="premium-tag">Enterprise • Government • Investors</span>
-            </div>
-        </header>
-        <div class="container">
-            <div class="card">
-                <div class="grid-2">
-                    <div>
-                        <label><strong>Country / Region</strong></label>
-                        <input type="text" id="countrySearchInput" placeholder="Search country... e.g. Malawi, Vietnam, Ethiopia">
-                        <div id="countryDropdown" style="position:absolute; background:white; border:1px solid #ddd; border-radius:16px; max-height:320px; overflow:auto; width:100%; z-index:100; display:none; box-shadow:0 10px 25px rgba(0,0,0,0.1);"></div>
-                    </div>
-                    <div style="display:flex; gap:1rem; align-items:flex-end;">
-                        <button id="refreshDataBtn" class="btn-primary"><i class="fas fa-sync-alt"></i> Run AI Analysis</button>
-                        <button id="premiumReportBtn" class="btn-primary btn-premium"><i class="fas fa-crown"></i> Premium Deep Report ($49)</button>
-                    </div>
-                </div>
-                
-                <div id="factorEndowmentCard" class="insight-block">
-                    <strong>Select a country to begin AI-powered analysis.</strong>
-                </div>
-            </div>
-
-            <div class="card">
-                <h3><i class="fas fa-chart-pie"></i> RCA Analysis &amp; AI Investment Recommendations</h3>
-                <div id="rcaOutput"></div>
-            </div>
-
-            <div class="card">
-                <h3><i class="fas fa-lightbulb"></i> AI Business &amp; Investment Opportunities</h3>
-                <div id="investmentOutput"></div>
-            </div>
+<!-- ═══ RCA PAGE ═══ -->
+<div id="rca-page" class="page active">
+  <div class="main-wrap">
+    <aside class="sidebar">
+      <div>
+        <div class="sidebar-label">Select Country</div>
+        <div class="search-wrap">
+          <span class="search-icon">🔍</span>
+          <input type="text" class="search-input" id="countrySearch" placeholder="Search 60+ countries…" autocomplete="off">
+          <div class="country-list" id="countryList"></div>
         </div>
-    </div>
+      </div>
 
-    <!-- Tab 2: Global Intelligence -->
-    <div id="tab2" class="tab-content">
-        <div class="container" style="padding:2rem 0;">
-            <h2 class="section-title">Global Comparative Advantage Database</h2>
-            <div class="card">
-                <table id="globalCountriesTable" class="display" style="width:100%"></table>
-            </div>
+      <div id="profileCard" style="display:none;">
+        <div class="profile-card">
+          <div class="profile-country-name" id="profileName">—</div>
+          <div class="profile-meta" id="profileMeta">—</div>
+          <div class="stat-grid" id="statGrid"></div>
         </div>
-    </div>
+      </div>
 
-    <!-- Tab 3: GIFF Policy Lab -->
-    <div id="tab3" class="tab-content">
-        <div class="container" style="padding:2rem 0;">
-            <h2 class="section-title">GIFF 6-Step Policy Generator <span class="ai-badge" style="background:#10b981;color:white;padding:4px 12px;border-radius:9999px;">AI + Real-Time Data</span></h2>
-            <div class="card">
-                <div style="text-align:right; margin-bottom:1rem;">
-                    <button id="exportPDFBtn" class="btn-pdf"><i class="fas fa-file-pdf"></i> Export Professional Policy Paper</button>
-                </div>
-                <div id="policyReportContent"></div>
-            </div>
+      <div id="endowmentBlock" style="display:none;" class="endowment-block">
+        <div class="endowment-title">⚡ Factor Endowment Signal</div>
+        <div id="endowmentText">—</div>
+      </div>
+
+      <div id="profileEmpty" class="empty-state" style="padding:2rem 0.5rem;">
+        <div class="empty-icon">🌐</div>
+        <div class="empty-title">Pick a country</div>
+        <div class="empty-sub">Search above to load the full RCA analysis and AI policy brief.</div>
+      </div>
+
+      <div class="source-note">
+        📐 Balassa RCA Index (1965) · New Structural Economics (J.Y. Lin) · Trade intensity modelled from World Bank / WITS baselines
+      </div>
+    </aside>
+
+    <div class="main-panel">
+      <div id="mainEmpty" class="empty-state" style="min-height:60vh;">
+        <div style="font-size:3rem;">🏭</div>
+        <div class="empty-title">Comparative Advantage Engine</div>
+        <div class="empty-sub">Select a country from the sidebar to compute RCA scores, benchmark peers, and generate an AI-powered GIFF policy brief.</div>
+      </div>
+
+      <div id="mainContent" style="display:none;">
+        <!-- RCA Scores -->
+        <div class="section-head">
+          <div class="section-title" id="rcaTitle">RCA Analysis</div>
+          <button class="btn btn-accent" id="generateAiBtn">✨ Generate AI Policy Brief</button>
         </div>
-    </div>
-
-    <!-- Tab 4: Monetization Hub -->
-    <div id="tab4" class="tab-content">
-        <div class="container" style="padding:3rem 0;">
-            <h2 class="section-title">Monetization &amp; Enterprise Features</h2>
-            <div class="grid-2">
-                <div class="card">
-                    <h3>Revenue Streams</h3>
-                    <ul style="line-height:2.2;">
-                        <li><strong>Premium Country Reports</strong> — $49–$299</li>
-                        <li><strong>Enterprise API Access</strong> — Custom pricing</li>
-                        <li><strong>Investment Lead Generation</strong> — Commission on FDI deals</li>
-                        <li><strong>Government Advisory Packages</strong> — Policy + Implementation support</li>
-                        <li><strong>White-label Platform</strong> for DFIs and Think Tanks</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <h3>AI Capabilities (Enhanced)</h3>
-                    <p><strong>Real-time Data Integration:</strong> World Bank, UN Comtrade, WITS, ILO, IMF, OECD (via API simulation)</p>
-                    <p><strong>Predictive Analytics:</strong> Growth forecasting, risk-adjusted ROI, sector maturity curves</p>
-                    <p><strong>Business Model Generator:</strong> Specific investable projects with cost structures and projected returns</p>
-                </div>
-            </div>
+        <div class="rca-grid">
+          <div>
+            <div class="rca-column-title"><div class="rca-dot dot-green"></div> Revealed Comparative Advantage (RCA ≥ 1.0)</div>
+            <div id="rcaRevealed"></div>
+          </div>
+          <div>
+            <div class="rca-column-title"><div class="rca-dot dot-amber"></div> Latent / Emerging Advantage</div>
+            <div id="rcaLatent"></div>
+          </div>
         </div>
-    </div>
-</main>
 
-<footer>
-    <div class="container">
-        AISA·AI — Powered by New Structural Economics (Justin Yifu Lin) • Enhanced with AI for Realistic Investment Intelligence
+        <!-- Chart -->
+        <div class="chart-card">
+          <div class="chart-title">RCA Score Distribution — Top 12 Sectors</div>
+          <div style="position:relative; height:220px;">
+            <canvas id="rcaChart" role="img" aria-label="Bar chart of RCA scores by sector for selected country"></canvas>
+          </div>
+        </div>
+
+        <!-- Benchmarks -->
+        <div class="section-head" style="margin-top:1rem;">
+          <div class="section-title">Benchmark Peers</div>
+          <span style="font-size:0.75rem;color:var(--muted);">Countries with 2–4× higher GDP per capita</span>
+        </div>
+        <div class="benchmark-grid" id="benchmarkGrid"></div>
+
+        <!-- AI Policy -->
+        <div id="aiPolicySection" style="display:none;">
+          <div class="section-head" style="margin-top:1rem;">
+            <div class="section-title">GIFF Policy Brief <span style="font-size:0.75rem;font-weight:400;color:var(--muted);font-family:'Syne',sans-serif;"> — AI Generated</span></div>
+            <button class="btn btn-ghost" id="copyPolicyBtn">📋 Copy Report</button>
+          </div>
+          <div class="ai-panel">
+            <div class="ai-panel-header">
+              <div class="ai-panel-title" id="policyTitle">Growth Identification & Facilitation Framework</div>
+              <div class="ai-pill"><div class="dot-live"></div> Claude Sonnet</div>
+            </div>
+            <div class="ai-panel-body" id="policyBody">
+              <div class="ai-loading">
+                <div class="typing-dots"><span></span><span></span><span></span></div>
+                Generating policy analysis…
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-</footer>
+  </div>
+</div>
+
+<!-- ═══ DATA PAGE ═══ -->
+<div id="data-page" class="page">
+  <div class="table-page">
+    <div class="data-table-wrap">
+      <div class="data-table-header">
+        <div>
+          <div style="font-family:'DM Serif Display',serif;font-size:1.3rem;">Global Economic Database</div>
+          <div style="font-size:0.75rem;color:var(--muted);margin-top:2px;">60+ countries · Click any row to load into RCA Engine</div>
+        </div>
+        <input type="text" class="search-bar-table" id="tableSearch" placeholder="Filter countries…">
+      </div>
+      <div style="overflow-x:auto;">
+        <table class="data-table" id="mainTable">
+          <thead>
+            <tr>
+              <th>Country</th>
+              <th>Region</th>
+              <th>GDP/cap</th>
+              <th>Growth</th>
+              <th>Labor Force</th>
+              <th>Manuf. %GDP</th>
+              <th>Exports %GDP</th>
+              <th>Type</th>
+              <th>Top RCA Sector</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ POLICY PAGE ═══ -->
+<div id="policy-page" class="page">
+  <div class="policy-page">
+    <div class="policy-header">
+      <div class="policy-title">GIFF Policy Lab</div>
+      <div class="policy-subtitle">Growth Identification & Facilitation Framework · Justin Yifu Lin · New Structural Economics</div>
+    </div>
+    <div id="policyLabContent">
+      <div class="empty-state">
+        <div class="empty-icon">📋</div>
+        <div class="empty-title">No policy brief yet</div>
+        <div class="empty-sub">Go to the RCA Engine, select a country, and click "Generate AI Policy Brief" to create a full report here.</div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <script>
-    // Enhanced Country Database (expandable with real API calls)
-    const countryDatabase = { /* ... same as original with additions */ 
-        "Malawi": { gdpPc: 645, gdpGrowth: 3.8, laborForce: 9.2, manufacturingVa: 9.5, exportsPct: 25, type: "labor", specializations: ["Agriculture", "Textiles"] },
-        // Add more countries with richer data...
-    };
+// ═══════════════════════════════════════════
+//  COUNTRY DATABASE — 60+ countries
+// ═══════════════════════════════════════════
+const DB = {
+  "United States":    {flag:"🇺🇸",region:"N. America",gdpPc:76300,growth:2.1,labor:168,manuf:11,exports:11,type:"capital",specs:["Technology","Aerospace","Pharmaceuticals","Finance","Defense"]},
+  "Germany":          {flag:"🇩🇪",region:"Europe",gdpPc:52700,growth:1.8,labor:45,manuf:19,exports:47,type:"capital",specs:["Machinery","Automotive","Chemicals","Precision instruments"]},
+  "Japan":            {flag:"🇯🇵",region:"Asia",gdpPc:39000,growth:1.5,labor:69,manuf:20,exports:18,type:"capital",specs:["Electronics","Automotive","Robotics","Optical equipment"]},
+  "South Korea":      {flag:"🇰🇷",region:"Asia",gdpPc:33000,growth:2.6,labor:28,manuf:25,exports:40,type:"capital",specs:["Semiconductors","Electronics","Shipbuilding","Steel"]},
+  "France":           {flag:"🇫🇷",region:"Europe",gdpPc:43000,growth:1.6,labor:30,manuf:10,exports:31,type:"capital",specs:["Luxury goods","Aerospace","Agro-food","Pharmaceuticals"]},
+  "United Kingdom":   {flag:"🇬🇧",region:"Europe",gdpPc:46000,growth:1.9,labor:33,manuf:9,exports:30,type:"capital",specs:["Financial services","Pharmaceuticals","Aerospace","Creative industries"]},
+  "Netherlands":      {flag:"🇳🇱",region:"Europe",gdpPc:57000,growth:2.0,labor:9,manuf:14,exports:83,type:"capital",specs:["Agro-food","Chemicals","Logistics","Technology"]},
+  "Singapore":        {flag:"🇸🇬",region:"Asia",gdpPc:65200,growth:3.2,labor:3.5,manuf:22,exports:176,type:"capital",specs:["Electronics","Chemicals","Financial services","Logistics"]},
+  "Switzerland":      {flag:"🇨🇭",region:"Europe",gdpPc:91000,growth:1.7,labor:5.1,manuf:17,exports:64,type:"capital",specs:["Pharmaceuticals","Watchmaking","Financial services","Precision machinery"]},
+  "Sweden":           {flag:"🇸🇪",region:"Europe",gdpPc:55000,growth:2.3,labor:5.3,manuf:14,exports:48,type:"capital",specs:["Machinery","Vehicles","Electronics","Pharmaceuticals"]},
+  "Canada":           {flag:"🇨🇦",region:"N. America",gdpPc:52000,growth:2.0,labor:20,manuf:10,exports:32,type:"resource",specs:["Oil & gas","Mining","Lumber","Agri-food"]},
+  "Australia":        {flag:"🇦🇺",region:"Oceania",gdpPc:60000,growth:2.4,labor:14,manuf:6,exports:25,type:"resource",specs:["Mining","Agriculture","LNG","Education services"]},
+  "China":            {flag:"🇨🇳",region:"Asia",gdpPc:12700,growth:5.2,labor:782,manuf:28,exports:19,type:"balanced",specs:["Electronics","Textiles","Machinery","Chemicals","Steel"]},
+  "Vietnam":          {flag:"🇻🇳",region:"Asia",gdpPc:4300,growth:6.5,labor:56,manuf:22,exports:105,type:"labor",specs:["Textiles","Electronics","Footwear","Furniture"]},
+  "India":            {flag:"🇮🇳",region:"Asia",gdpPc:2500,growth:6.3,labor:520,manuf:13,exports:22,type:"labor",specs:["IT services","Textiles","Pharmaceuticals","Gems & jewelry"]},
+  "Bangladesh":       {flag:"🇧🇩",region:"Asia",gdpPc:2770,growth:6.0,labor:74,manuf:21,exports:14,type:"labor",specs:["Garments","Textiles","Footwear","Jute"]},
+  "Pakistan":         {flag:"🇵🇰",region:"Asia",gdpPc:1580,growth:3.1,labor:72,manuf:13,exports:9,type:"labor",specs:["Textiles","Rice","Leather","Sporting goods"]},
+  "Indonesia":        {flag:"🇮🇩",region:"Asia",gdpPc:5200,growth:5.0,labor:138,manuf:20,exports:21,type:"balanced",specs:["Palm oil","Coal","Textiles","Electronics"]},
+  "Malaysia":         {flag:"🇲🇾",region:"Asia",gdpPc:12500,growth:4.7,labor:16,manuf:23,exports:68,type:"balanced",specs:["Electronics","Palm oil","Rubber","Chemicals"]},
+  "Thailand":         {flag:"🇹🇭",region:"Asia",gdpPc:7700,growth:3.8,labor:40,manuf:25,exports:66,type:"balanced",specs:["Electronics","Automotive","Agro-food","Rubber"]},
+  "Philippines":      {flag:"🇵🇭",region:"Asia",gdpPc:3600,growth:5.5,labor:50,manuf:18,exports:28,type:"labor",specs:["Electronics","Garments","Coconut products","BPO services"]},
+  "Cambodia":         {flag:"🇰🇭",region:"Asia",gdpPc:1700,growth:5.8,labor:9,manuf:18,exports:68,type:"labor",specs:["Garments","Footwear","Rice","Tourism"]},
+  "Myanmar":          {flag:"🇲🇲",region:"Asia",gdpPc:1100,growth:2.5,labor:26,manuf:9,exports:22,type:"labor",specs:["Garments","Natural gas","Agricultural products","Gemstones"]},
+  "Sri Lanka":        {flag:"🇱🇰",region:"Asia",gdpPc:3350,growth:2.0,labor:9.5,manuf:17,exports:22,type:"labor",specs:["Tea","Garments","Rubber","Gems"]},
+  "Brazil":           {flag:"🇧🇷",region:"S. America",gdpPc:8900,growth:2.9,labor:107,manuf:11,exports:19,type:"resource",specs:["Agribusiness","Mining","Aerospace","Steel"]},
+  "Mexico":           {flag:"🇲🇽",region:"N. America",gdpPc:10600,growth:3.1,labor:59,manuf:18,exports:39,type:"balanced",specs:["Automotive","Electronics","Agro-food","Petroleum"]},
+  "Colombia":         {flag:"🇨🇴",region:"S. America",gdpPc:6600,growth:3.5,labor:26,manuf:10,exports:16,type:"resource",specs:["Coffee","Coal","Oil","Cut flowers"]},
+  "Peru":             {flag:"🇵🇪",region:"S. America",gdpPc:7100,growth:3.2,labor:18,manuf:13,exports:25,type:"resource",specs:["Copper","Gold","Agriculture","Textiles"]},
+  "Argentina":        {flag:"🇦🇷",region:"S. America",gdpPc:10600,growth:1.5,labor:20,manuf:17,exports:18,type:"resource",specs:["Soybeans","Beef","Lithium","Machinery"]},
+  "Chile":            {flag:"🇨🇱",region:"S. America",gdpPc:16000,growth:2.8,labor:10,manuf:10,exports:35,type:"resource",specs:["Copper","Lithium","Agro-food","Forestry"]},
+  "Nigeria":          {flag:"🇳🇬",region:"Africa",gdpPc:2250,growth:3.3,labor:78,manuf:8,exports:14,type:"resource",specs:["Oil","Gas","Agro-processing","Entertainment"]},
+  "Ethiopia":         {flag:"🇪🇹",region:"Africa",gdpPc:1020,growth:6.1,labor:58,manuf:5,exports:12,type:"labor",specs:["Coffee","Textiles","Leather","Cut flowers"]},
+  "Kenya":            {flag:"🇰🇪",region:"Africa",gdpPc:2150,growth:5.0,labor:25,manuf:7,exports:25,type:"labor",specs:["Tea","Horticulture","ICT","Garments"]},
+  "Tanzania":         {flag:"🇹🇿",region:"Africa",gdpPc:1100,growth:6.0,labor:28,manuf:5,exports:21,type:"labor",specs:["Gold","Coffee","Cashews","Horticulture"]},
+  "Uganda":           {flag:"🇺🇬",region:"Africa",gdpPc:870,growth:5.5,labor:18,manuf:7,exports:18,type:"labor",specs:["Coffee","Fish","Maize","Textiles"]},
+  "Rwanda":           {flag:"🇷🇼",region:"Africa",gdpPc:980,growth:7.2,labor:7,manuf:6,exports:20,type:"labor",specs:["Coffee","Tea","ICT services","Minerals"]},
+  "Malawi":           {flag:"🇲🇼",region:"Africa",gdpPc:645,growth:3.2,labor:9,manuf:9,exports:22,type:"labor",specs:["Tobacco","Tea","Sugar","Cotton"]},
+  "Mozambique":       {flag:"🇲🇿",region:"Africa",gdpPc:540,growth:4.5,labor:14,manuf:7,exports:35,type:"resource",specs:["Natural gas","Coal","Aluminum","Cashews"]},
+  "Zambia":           {flag:"🇿🇲",region:"Africa",gdpPc:1300,growth:3.8,labor:8,manuf:8,exports:42,type:"resource",specs:["Copper","Cobalt","Tobacco","Cotton"]},
+  "Zimbabwe":         {flag:"🇿🇼",region:"Africa",gdpPc:1500,growth:3.0,labor:8,manuf:10,exports:28,type:"resource",specs:["Tobacco","Gold","Platinum","Cotton"]},
+  "Ghana":            {flag:"🇬🇭",region:"Africa",gdpPc:2350,growth:3.5,labor:13,manuf:10,exports:39,type:"resource",specs:["Gold","Cocoa","Oil","Timber"]},
+  "Senegal":          {flag:"🇸🇳",region:"Africa",gdpPc:1690,growth:5.5,labor:8,manuf:12,exports:27,type:"labor",specs:["Phosphates","Fish","Peanuts","Tourism"]},
+  "Côte d'Ivoire":    {flag:"🇨🇮",region:"Africa",gdpPc:2360,growth:6.0,labor:12,manuf:16,exports:43,type:"resource",specs:["Cocoa","Coffee","Cashews","Palm oil"]},
+  "Morocco":          {flag:"🇲🇦",region:"Africa",gdpPc:3880,growth:3.5,labor:12,manuf:17,exports:36,type:"balanced",specs:["Phosphates","Automotive","Textiles","Agriculture"]},
+  "Egypt":            {flag:"🇪🇬",region:"Africa",gdpPc:3900,growth:3.5,labor:32,manuf:17,exports:20,type:"balanced",specs:["Oil","Textiles","Tourism","Chemicals"]},
+  "South Africa":     {flag:"🇿🇦",region:"Africa",gdpPc:6700,growth:1.9,labor:23,manuf:12,exports:30,type:"resource",specs:["Mining","Automotive","Finance","Agri-food"]},
+  "Turkey":           {flag:"🇹🇷",region:"Europe/Asia",gdpPc:9500,growth:4.0,labor:32,manuf:22,exports:28,type:"balanced",specs:["Automotive","Textiles","Machinery","Agro-food"]},
+  "Poland":           {flag:"🇵🇱",region:"Europe",gdpPc:18500,growth:2.8,labor:17,manuf:22,exports:61,type:"capital",specs:["Machinery","Automotive","Electronics","Agri-food"]},
+  "Czechia":          {flag:"🇨🇿",region:"Europe",gdpPc:27000,growth:2.0,labor:5.4,manuf:27,exports:73,type:"capital",specs:["Automotive","Machinery","Electronics","Chemicals"]},
+  "Hungary":          {flag:"🇭🇺",region:"Europe",gdpPc:19500,growth:2.5,labor:4.9,manuf:24,exports:90,type:"capital",specs:["Automotive","Electronics","Machinery","Chemicals"]},
+  "Romania":          {flag:"🇷🇴",region:"Europe",gdpPc:15000,growth:3.0,labor:9,manuf:22,exports:44,type:"balanced",specs:["Automotive","IT services","Agro-food","Machinery"]},
+  "Saudi Arabia":     {flag:"🇸🇦",region:"M. East",gdpPc:28000,growth:3.5,labor:15,manuf:12,exports:44,type:"resource",specs:["Oil","Petrochemicals","Construction","Tourism"]},
+  "UAE":              {flag:"🇦🇪",region:"M. East",gdpPc:47000,growth:4.0,labor:6,manuf:9,exports:103,type:"resource",specs:["Petroleum","Logistics","Tourism","Financial services"]},
+  "Iran":             {flag:"🇮🇷",region:"M. East",gdpPc:7700,growth:3.0,labor:27,manuf:13,exports:19,type:"resource",specs:["Petroleum","Petrochemicals","Carpets","Pistachios"]},
+  "Israel":           {flag:"🇮🇱",region:"M. East",gdpPc:55000,growth:3.0,labor:4.4,manuf:14,exports:33,type:"capital",specs:["Technology","Diamonds","Pharmaceuticals","Defense"]},
+  "Kazakhstan":       {flag:"🇰🇿",region:"Central Asia",gdpPc:10200,growth:3.5,labor:9,manuf:13,exports:46,type:"resource",specs:["Oil","Wheat","Metals","Chemicals"]},
+  "Ukraine":          {flag:"🇺🇦",region:"Europe",gdpPc:3900,growth:1.5,labor:17,manuf:15,exports:44,type:"balanced",specs:["Wheat","Steel","IT services","Sunflower oil"]},
+  "Pakistan":         {flag:"🇵🇰",region:"Asia",gdpPc:1580,growth:3.1,labor:72,manuf:13,exports:9,type:"labor",specs:["Textiles","Rice","Leather","Sporting goods"]},
+  "New Zealand":      {flag:"🇳🇿",region:"Oceania",gdpPc:46800,growth:2.2,labor:2.7,manuf:13,exports:28,type:"resource",specs:["Dairy","Meat","Wood","Tourism"]},
+  "Portugal":         {flag:"🇵🇹",region:"Europe",gdpPc:24000,growth:2.5,labor:5.1,manuf:15,exports:43,type:"balanced",specs:["Tourism","Cork","Wine","Automotive"]},
+  "Spain":            {flag:"🇪🇸",region:"Europe",gdpPc:30500,growth:2.4,labor:23,manuf:14,exports:34,type:"balanced",specs:["Tourism","Automotive","Agro-food","Chemicals"]},
+  "Italy":            {flag:"🇮🇹",region:"Europe",gdpPc:35700,growth:1.2,labor:25,manuf:18,exports:32,type:"capital",specs:["Machinery","Automotive","Fashion","Agro-food"]},
+};
 
-    const SECTORS = [ /* expanded list with more realistic sectors */ ];
+// ═══════════════════════════════════════════
+//  SECTORS
+// ═══════════════════════════════════════════
+const SECTORS = [
+  {name:"Textiles & Apparel",     fi:"labor",   ws:0.052},
+  {name:"Garments & Clothing",    fi:"labor",   ws:0.048},
+  {name:"Footwear & Leather",     fi:"labor",   ws:0.025},
+  {name:"Agro-processing",        fi:"labor",   ws:0.038},
+  {name:"Processed Foods",        fi:"labor",   ws:0.042},
+  {name:"Furniture & Wood",       fi:"labor",   ws:0.021},
+  {name:"Chemicals & Fertilizers",fi:"capital", ws:0.085},
+  {name:"Pharmaceuticals",        fi:"capital", ws:0.062},
+  {name:"Machinery & Equipment",  fi:"capital", ws:0.078},
+  {name:"Electrical Equipment",   fi:"capital", ws:0.055},
+  {name:"Electronics & Components",fi:"capital",ws:0.092},
+  {name:"Computers & Peripherals",fi:"capital", ws:0.045},
+  {name:"Telecom Equipment",      fi:"capital", ws:0.038},
+  {name:"Automotive Parts",       fi:"capital", ws:0.042},
+  {name:"Medical Devices",        fi:"capital", ws:0.028},
+  {name:"Semiconductors",         fi:"capital", ws:0.055},
+  {name:"Precision Instruments",  fi:"capital", ws:0.031},
+  {name:"Minerals & Ores",        fi:"resource",ws:0.035},
+  {name:"Petroleum & Gas",        fi:"resource",ws:0.088},
+  {name:"Mining Products",        fi:"resource",ws:0.044},
+  {name:"Agricultural Commodities",fi:"resource",ws:0.041},
+  {name:"ICT & Software Services",fi:"skill",   ws:0.045},
+  {name:"Financial Services",     fi:"skill",   ws:0.038},
+  {name:"Tourism & Hospitality",  fi:"labor",   ws:0.033},
+  {name:"Logistics & Trade",      fi:"capital", ws:0.029},
+];
 
-    // Improved RCA + AI Scoring
-    function calculateAIEnhancedRCA(countryData) {
-        return SECTORS.map(sector => {
-            let baseRCA = /* sophisticated calculation */;
-            let aiScore = baseRCA * (1 + (countryData.gdpGrowth / 100)) * (sector.factorMatch || 1);
-            let investmentPotential = Math.round(aiScore * (sector.worldShare || 0.05) * 1000);
-            
-            return {
-                ...sector,
-                rca: baseRCA.toFixed(2),
-                aiInvestmentScore: investmentPotential,
-                confidence: Math.min(98, 45 + Math.random()*45),
-                projectedROI: (8 + Math.random()*18).toFixed(1) + "%",
-                businessIdeas: generateBusinessIdeas(sector, countryData)
-            };
-        });
+// ═══════════════════════════════════════════
+//  RCA CALCULATION
+// ═══════════════════════════════════════════
+function calcRCA(country, data) {
+  const {type, manuf, exports: expPct, specs} = data;
+  return SECTORS.map(s => {
+    let base = 0.4;
+    if (type === "capital") {
+      if (s.fi === "capital") base = 2.0 + (manuf/15)*1.4;
+      else if (s.fi === "skill") base = 2.2;
+      else if (s.fi === "labor") base = 0.6;
+      else base = 0.5;
+    } else if (type === "labor") {
+      if (s.fi === "labor") base = 2.4 + (manuf/10)*1.1;
+      else if (s.fi === "resource") base = 1.1;
+      else base = 0.5;
+    } else if (type === "resource") {
+      if (s.fi === "resource") base = 2.5;
+      else if (s.fi === "labor") base = 1.0;
+      else base = 0.6;
+    } else {
+      if (s.fi === "labor") base = 1.8;
+      else if (s.fi === "capital") base = 1.5;
+      else if (s.fi === "resource") base = 1.2;
+      else base = 1.0;
+    }
+    if (specs) {
+      for (const sp of specs) {
+        const sLow = s.name.toLowerCase(), spLow = sp.toLowerCase();
+        if (sLow.includes(spLow.split(" ")[0]) || spLow.includes(sLow.split(" ")[0])) {
+          base *= 1.45;
+        }
+      }
+    }
+    base *= (expPct / 28);
+    const rca = Math.min(4.8, Math.max(0.15, base));
+    const conf = Math.min(93, 48 + expPct/2 + manuf*1.4);
+    return {...s, rca: +rca.toFixed(2), conf: Math.round(conf)};
+  }).sort((a,b) => b.rca - a.rca);
+}
+
+function findBenchmarks(data, name) {
+  const lo = data.gdpPc * 2, hi = data.gdpPc * 4;
+  let out = Object.entries(DB)
+    .filter(([n,d]) => n !== name && d.gdpPc >= lo && d.gdpPc <= hi)
+    .slice(0, 4);
+  if (!out.length) {
+    if (data.type === "labor") out = [["Vietnam", DB["Vietnam"]], ["Bangladesh", DB["Bangladesh"]]];
+    else if (data.type === "resource") out = [["Morocco", DB["Morocco"]], ["Colombia", DB["Colombia"]]];
+    else out = [["Poland", DB["Poland"]], ["China", DB["China"]]];
+  }
+  return out;
+}
+
+// ═══════════════════════════════════════════
+//  STATE
+// ═══════════════════════════════════════════
+let selectedCountry = null;
+let rcaChart = null;
+let lastPolicyText = "";
+
+// ═══════════════════════════════════════════
+//  RENDER ANALYSIS
+// ═══════════════════════════════════════════
+function renderAnalysis(name) {
+  const data = DB[name];
+  selectedCountry = {name, data};
+
+  // Sidebar profile
+  document.getElementById("profileEmpty").style.display = "none";
+  document.getElementById("profileCard").style.display = "block";
+  document.getElementById("endowmentBlock").style.display = "block";
+  document.getElementById("profileName").textContent = data.flag + " " + name;
+  document.getElementById("profileMeta").textContent = data.region + " · " + data.type.toUpperCase() + " economy";
+  document.getElementById("statGrid").innerHTML = `
+    <div class="stat-box"><div class="stat-label">GDP/capita</div><div class="stat-value">$${(data.gdpPc).toLocaleString()}</div></div>
+    <div class="stat-box"><div class="stat-label">Growth</div><div class="stat-value">${data.growth}<span class="stat-unit">%</span></div></div>
+    <div class="stat-box"><div class="stat-label">Labor Force</div><div class="stat-value">${data.labor}<span class="stat-unit">M</span></div></div>
+    <div class="stat-box"><div class="stat-label">Manuf. %GDP</div><div class="stat-value">${data.manuf}<span class="stat-unit">%</span></div></div>
+  `;
+  const endowmentMap = {
+    labor: "Labor-abundant economy. CAF strategy: textiles, garments, agro-processing, light manufacturing. Leverage cost advantage for export-led growth.",
+    capital: "Capital-abundant economy. Edge in machinery, electronics, R&D-intensive and high-value-added manufacturing.",
+    resource: "Resource-abundant economy. Potential for upstream processing, petrochemicals, agro-food value chains, and resource-linked industries.",
+    balanced: "Balanced factor endowments. Diversified manufacturing portfolio. Pursue both labor-intensive assembly and mid-tech capital goods."
+  };
+  document.getElementById("endowmentText").textContent = endowmentMap[data.type] || "";
+
+  // Main
+  document.getElementById("mainEmpty").style.display = "none";
+  document.getElementById("mainContent").style.display = "block";
+  document.getElementById("rcaTitle").textContent = "RCA Analysis — " + name;
+  document.getElementById("aiPolicySection").style.display = "none";
+
+  const scores = calcRCA(name, data);
+  const revealed = scores.filter(s => s.rca >= 1.0).slice(0, 8);
+  const latent = scores.filter(s => s.rca >= 0.55 && s.rca < 1.0).slice(0, 6);
+
+  function scoreClass(r) {
+    if (r >= 3.0) return "score-very-high";
+    if (r >= 1.8) return "score-high";
+    if (r >= 1.0) return "score-medium";
+    return "score-latent";
+  }
+
+  let revHtml = "", latHtml = "";
+  revealed.forEach(s => {
+    const pct = Math.min(100, (s.rca / 4.8) * 100).toFixed(0);
+    revHtml += `<div class="rca-item">
+      <div class="rca-row">
+        <span class="rca-name">${s.name}</span>
+        <span class="rca-score ${scoreClass(s.rca)}">RCA ${s.rca}</span>
+      </div>
+      <div class="rca-bar-wrap"><div class="rca-bar" style="width:${pct}%"></div></div>
+      <div class="rca-meta">${s.fi} intensive · ${s.conf}% confidence</div>
+    </div>`;
+  });
+  latent.forEach(s => {
+    const projected = (s.rca + 0.45).toFixed(1);
+    const pct = Math.min(100, (s.rca / 4.8) * 100).toFixed(0);
+    latHtml += `<div class="rca-item" style="border-color:var(--amber-border);">
+      <div class="rca-row">
+        <span class="rca-name">${s.name}</span>
+        <span class="rca-score score-latent">→ ${projected}</span>
+      </div>
+      <div class="rca-bar-wrap"><div class="rca-bar" style="width:${pct}%;background:linear-gradient(90deg,var(--amber),#f59e0b)"></div></div>
+      <div class="rca-meta">${s.fi} intensive · Needs: policy facilitation</div>
+    </div>`;
+  });
+  document.getElementById("rcaRevealed").innerHTML = revHtml || "<p style='color:var(--subtle);font-size:0.82rem;'>No strong RCA detected.</p>";
+  document.getElementById("rcaLatent").innerHTML = latHtml || "<p style='color:var(--subtle);font-size:0.82rem;'>No latent opportunities identified.</p>";
+
+  // Chart
+  const top12 = scores.slice(0, 12);
+  const labels = top12.map(s => s.name.length > 18 ? s.name.slice(0, 16)+"…" : s.name);
+  const vals = top12.map(s => s.rca);
+  const colors = vals.map(v => v >= 1.0 ? "rgba(5,150,105,0.8)" : "rgba(217,119,6,0.5)");
+  if (rcaChart) rcaChart.destroy();
+  rcaChart = new Chart(document.getElementById("rcaChart"), {
+    type: "bar",
+    data: { labels, datasets: [{
+      label: "RCA Score",
+      data: vals,
+      backgroundColor: colors,
+      borderRadius: 4,
+      borderSkipped: false,
+    }]},
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: {display:false}, tooltip: { callbacks: { label: ctx => ` RCA: ${ctx.raw}` } } },
+      scales: {
+        x: { grid:{display:false}, ticks:{font:{family:"'DM Mono',monospace",size:10}, maxRotation:45} },
+        y: { grid:{color:"rgba(0,0,0,0.05)"}, ticks:{font:{family:"'DM Mono',monospace",size:10}},
+             min:0, max:5,
+             afterDataLimits(scale){ scale.max = 5; }
+           }
+      }
+    }
+  });
+
+  // Benchmarks
+  const benches = findBenchmarks(data, name);
+  let bHtml = "";
+  benches.forEach(([bn, bd]) => {
+    bHtml += `<div class="benchmark-card">
+      <div class="bench-name">${bd.flag} ${bn}</div>
+      <div class="bench-gdp">$${bd.gdpPc.toLocaleString()}</div>
+      <div class="bench-row">Manuf: ${bd.manuf}% · Exports: ${bd.exports}%</div>
+      <div class="bench-row" style="margin-top:4px;"><span class="tbl-pill type-${bd.type}">${bd.type}</span></div>
+      <div class="bench-row" style="margin-top:6px;color:var(--muted);">FDI target for ${bd.specs[0]}</div>
+    </div>`;
+  });
+  document.getElementById("benchmarkGrid").innerHTML = bHtml;
+}
+
+// ═══════════════════════════════════════════
+//  AI POLICY GENERATION
+// ═══════════════════════════════════════════
+document.getElementById("generateAiBtn").addEventListener("click", async () => {
+  if (!selectedCountry) return;
+  const {name, data} = selectedCountry;
+  const scores = calcRCA(name, data);
+  const revealed = scores.filter(s => s.rca >= 1.0).slice(0, 5).map(s => `${s.name} (RCA ${s.rca})`).join(", ");
+  const latent = scores.filter(s => s.rca >= 0.55 && s.rca < 1.0).slice(0, 4).map(s => s.name).join(", ");
+  const benches = findBenchmarks(data, name).map(([n]) => n).join(", ");
+
+  const prompt = `You are an expert economist specializing in New Structural Economics (Justin Yifu Lin) and industrial policy for developing countries.
+
+Generate a GIFF (Growth Identification & Facilitation Framework) policy brief for ${name} with the following economic profile:
+- GDP per capita: $${data.gdpPc.toLocaleString()} | Growth: ${data.growth}% | Labor Force: ${data.labor}M
+- Manufacturing % GDP: ${data.manuf}% | Exports % GDP: ${data.exports}%
+- Economy type: ${data.type.toUpperCase()}
+- Key specializations: ${data.specs.join(", ")}
+- Revealed comparative advantages (Balassa RCA ≥ 1.0): ${revealed}
+- Latent/emerging advantages: ${latent}
+- Benchmark countries (2-4x higher GDP per capita): ${benches}
+
+Write a detailed but concise GIFF 6-step policy brief. For EACH of the 6 steps, provide 2-3 actionable, country-specific sentences that directly address ${name}'s situation. Be concrete — name specific sectors, companies from benchmark countries, policy instruments, and realistic timelines.
+
+Format your response EXACTLY as follows (use these exact headings):
+
+STEP 1: TARGET SELECTION
+[content]
+
+STEP 2: REMOVE BINDING CONSTRAINTS
+[content]
+
+STEP 3: ATTRACT FDI & INCUBATE
+[content]
+
+STEP 4: SCALE SELF-DISCOVERIES
+[content]
+
+STEP 5: SPECIAL ECONOMIC ZONES
+[content]
+
+STEP 6: TIME-BOUND INCENTIVES
+[content]
+
+AI PROJECTION
+[2-3 sentences on projected GDP impact and timeline if CAF strategy is followed]`;
+
+  document.getElementById("aiPolicySection").style.display = "block";
+  document.getElementById("policyTitle").textContent = `GIFF Policy Brief — ${name}`;
+  document.getElementById("policyBody").innerHTML = `<div class="ai-loading"><div class="typing-dots"><span></span><span></span><span></span></div> Generating AI policy analysis for ${name}…</div>`;
+  document.getElementById("policyBody").scrollIntoView({behavior:"smooth", block:"center"});
+
+  try {
+    const resp = await fetch("https://api.anthropic.com/v1/messages", {
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body: JSON.stringify({
+        model:"claude-sonnet-4-20250514",
+        max_tokens:1000,
+        stream:true,
+        messages:[{role:"user",content:prompt}]
+      })
+    });
+
+    const reader = resp.body.getReader();
+    const dec = new TextDecoder();
+    let fullText = "";
+    document.getElementById("policyBody").innerHTML = `<div class="streamed-text" id="streamTarget"></div>`;
+    const target = document.getElementById("streamTarget");
+
+    while (true) {
+      const {value, done} = await reader.read();
+      if (done) break;
+      const chunk = dec.decode(value);
+      const lines = chunk.split("\n");
+      for (const line of lines) {
+        if (!line.startsWith("data:")) continue;
+        const raw = line.slice(5).trim();
+        if (raw === "[DONE]") continue;
+        try {
+          const ev = JSON.parse(raw);
+          if (ev.type === "content_block_delta" && ev.delta?.text) {
+            fullText += ev.delta.text;
+            target.textContent = fullText;
+          }
+        } catch {}
+      }
     }
 
-    function generateBusinessIdeas(sector, country) {
-        // AI-generated realistic business models
-        return [
-            `Establish mid-scale ${sector.name.toLowerCase()} export-oriented factory targeting EU/US markets`,
-            `Value-add processing hub with cold chain integration`,
-            `Tech-enabled platform connecting smallholders to global buyers`
-        ];
-    }
+    lastPolicyText = fullText;
+    renderFormattedPolicy(fullText, name, data);
+    syncPolicyLab(name, data, fullText);
 
-    // Render functions with enhanced UI and AI insights
-    function renderAnalysis(country) {
-        const data = getCountryData(country);
-        const results = calculateAIEnhancedRCA(data);
-        
-        // RCA + Investment HTML (improved)
-        let html = `<div class="grid-2">...`;
-        
-        // Add AI Investment Opportunities section with specific scores, ROI, and business models
-        document.getElementById("investmentOutput").innerHTML = investmentHTML;
-        
-        // Generate comprehensive policy paper with realistic projections
-    }
+  } catch(err) {
+    document.getElementById("policyBody").innerHTML = `<div style="color:var(--red);padding:1rem;font-size:0.85rem;">⚠ API error: ${err.message}. Ensure the Anthropic API key is configured.</div>`;
+  }
+});
 
-    // Real-time simulation note: In production, replace with actual fetch() to World Bank API, UN Comtrade, etc.
-    // Monetization: Stripe integration for report purchases, API keys for enterprise users.
+function renderFormattedPolicy(text, name, data) {
+  const steps = [
+    {key:"STEP 1: TARGET SELECTION", label:"Target Selection (Lin's 100-300% Rule)", num:"01"},
+    {key:"STEP 2: REMOVE BINDING CONSTRAINTS", label:"Remove Binding Constraints", num:"02"},
+    {key:"STEP 3: ATTRACT FDI & INCUBATE", label:"Attract FDI & Incubate", num:"03"},
+    {key:"STEP 4: SCALE SELF-DISCOVERIES", label:"Scale Self-Discoveries", num:"04"},
+    {key:"STEP 5: SPECIAL ECONOMIC ZONES", label:"Special Economic Zones", num:"05"},
+    {key:"STEP 6: TIME-BOUND INCENTIVES", label:"Time-Bound Incentives", num:"06"},
+  ];
 
-    // Initialize
-    buildTable();
-    renderAnalysis("Malawi");
+  function extractSection(txt, key, nextKey) {
+    const start = txt.indexOf(key);
+    if (start === -1) return "";
+    const contentStart = start + key.length;
+    const end = nextKey ? txt.indexOf(nextKey, contentStart) : txt.indexOf("AI PROJECTION", contentStart);
+    return (end === -1 ? txt.slice(contentStart) : txt.slice(contentStart, end)).trim();
+  }
+
+  const projStart = text.indexOf("AI PROJECTION");
+  const projText = projStart !== -1 ? text.slice(projStart + "AI PROJECTION".length).trim() : "";
+
+  let html = "";
+  steps.forEach((s, i) => {
+    const nextKey = i < steps.length - 1 ? steps[i+1].key : null;
+    const content = extractSection(text, s.key, nextKey);
+    html += `<div class="giff-step">
+      <div class="step-num">${s.num}</div>
+      <div class="step-content">
+        <div class="step-title">${s.label}</div>
+        <div class="step-text">${content || "See full analysis below."}</div>
+      </div>
+    </div>`;
+  });
+
+  if (projText) {
+    html += `<div style="background:var(--accent-bg);border:1px solid var(--accent-border);border-radius:var(--radius);padding:1rem;margin-top:0.5rem;">
+      <div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent2);margin-bottom:6px;">📊 AI Projection</div>
+      <div style="font-size:0.85rem;color:var(--ink3);line-height:1.6;">${projText}</div>
+    </div>`;
+  }
+
+  html += `<div class="source-note">Generated by Claude Sonnet · New Structural Economics (Justin Yifu Lin) · Balassa RCA Index · ${new Date().toLocaleDateString()}</div>`;
+  document.getElementById("policyBody").innerHTML = html;
+}
+
+function syncPolicyLab(name, data, text) {
+  const scores = calcRCA(name, data);
+  const topRCA = scores.filter(s => s.rca >= 1.0).slice(0, 3).map(s => `${s.name} (${s.rca})`).join(" · ");
+  document.getElementById("policyLabContent").innerHTML = `
+    <div class="policy-header" style="background:var(--ink2);margin-bottom:1.5rem;">
+      <div class="policy-title">${data.flag} ${name}</div>
+      <div class="policy-subtitle">${data.region} · GDP/cap $${data.gdpPc.toLocaleString()} · ${data.type.toUpperCase()} economy</div>
+      <div style="margin-top:1rem;font-size:0.8rem;color:#9ca3af;">Top RCA: ${topRCA}</div>
+    </div>
+    <div class="ai-panel">
+      <div class="ai-panel-header">
+        <div class="ai-panel-title">GIFF 6-Step Policy Brief — AI Generated</div>
+        <button class="btn btn-ghost" onclick="copyPolicy()" style="font-size:0.72rem;color:#9ca3af;border-color:#374151;">📋 Copy</button>
+      </div>
+      <div class="ai-panel-body" id="policyLabBody"></div>
+    </div>
+  `;
+  renderFormattedPolicyInto("policyLabBody", text);
+}
+
+function renderFormattedPolicyInto(targetId, text) {
+  // reuse same render logic, target different element
+  const steps = [
+    {key:"STEP 1: TARGET SELECTION", label:"Target Selection", num:"01"},
+    {key:"STEP 2: REMOVE BINDING CONSTRAINTS", label:"Remove Binding Constraints", num:"02"},
+    {key:"STEP 3: ATTRACT FDI & INCUBATE", label:"Attract FDI & Incubate", num:"03"},
+    {key:"STEP 4: SCALE SELF-DISCOVERIES", label:"Scale Self-Discoveries", num:"04"},
+    {key:"STEP 5: SPECIAL ECONOMIC ZONES", label:"Special Economic Zones", num:"05"},
+    {key:"STEP 6: TIME-BOUND INCENTIVES", label:"Time-Bound Incentives", num:"06"},
+  ];
+  function ex(txt, key, nk) {
+    const s = txt.indexOf(key); if (s===-1) return "";
+    const cs = s + key.length;
+    const e = nk ? txt.indexOf(nk, cs) : txt.indexOf("AI PROJECTION", cs);
+    return (e===-1 ? txt.slice(cs) : txt.slice(cs,e)).trim();
+  }
+  const projStart = text.indexOf("AI PROJECTION");
+  const projText = projStart !== -1 ? text.slice(projStart + "AI PROJECTION".length).trim() : "";
+  let html = "";
+  steps.forEach((s, i) => {
+    const nk = i < steps.length - 1 ? steps[i+1].key : null;
+    const c = ex(text, s.key, nk);
+    html += `<div class="giff-step"><div class="step-num">${s.num}</div><div class="step-content"><div class="step-title">${s.label}</div><div class="step-text">${c||"See analysis."}</div></div></div>`;
+  });
+  if (projText) html += `<div style="background:var(--accent-bg);border:1px solid var(--accent-border);border-radius:var(--radius);padding:1rem;margin-top:0.5rem;"><div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent2);margin-bottom:6px;">📊 AI Projection</div><div style="font-size:0.85rem;color:var(--ink3);line-height:1.6;">${projText}</div></div>`;
+  const el = document.getElementById(targetId);
+  if (el) el.innerHTML = html;
+}
+
+document.getElementById("copyPolicyBtn").addEventListener("click", copyPolicy);
+function copyPolicy() {
+  if (lastPolicyText) {
+    navigator.clipboard.writeText(lastPolicyText).then(() => {
+      const btn = document.getElementById("copyPolicyBtn");
+      if (btn) { btn.textContent = "✅ Copied!"; setTimeout(() => btn.textContent = "📋 Copy Report", 2000); }
+    });
+  }
+}
+
+// ═══════════════════════════════════════════
+//  COUNTRY SEARCH
+// ═══════════════════════════════════════════
+const searchInput = document.getElementById("countrySearch");
+const dropdown = document.getElementById("countryList");
+const allCountries = Object.keys(DB).sort();
+
+searchInput.addEventListener("input", () => {
+  const q = searchInput.value.toLowerCase().trim();
+  dropdown.innerHTML = "";
+  if (q.length < 1) { dropdown.style.display = "none"; return; }
+  const matches = allCountries.filter(c => c.toLowerCase().includes(q)).slice(0, 14);
+  if (!matches.length) { dropdown.style.display = "none"; return; }
+  dropdown.style.display = "block";
+  matches.forEach(c => {
+    const d = DB[c];
+    const el = document.createElement("div");
+    el.className = "country-item";
+    el.innerHTML = `<span class="c-flag">${d.flag}</span><span>${c}</span><span class="c-type-pill type-${d.type}">${d.type}</span>`;
+    el.addEventListener("click", () => {
+      searchInput.value = c;
+      dropdown.style.display = "none";
+      renderAnalysis(c);
+    });
+    dropdown.appendChild(el);
+  });
+});
+document.addEventListener("click", e => {
+  if (!searchInput.contains(e.target) && !dropdown.contains(e.target)) dropdown.style.display = "none";
+});
+
+// ═══════════════════════════════════════════
+//  GLOBAL TABLE
+// ═══════════════════════════════════════════
+function buildTable(filter="") {
+  const fLow = filter.toLowerCase();
+  const rows = allCountries.filter(c => c.toLowerCase().includes(fLow) || DB[c].region.toLowerCase().includes(fLow));
+  let html = "";
+  rows.forEach(c => {
+    const d = DB[c];
+    const scores = calcRCA(c, d);
+    const topRCA = scores[0]?.name || "—";
+    const typeColors = {labor:"type-labor",capital:"type-capital",resource:"type-resource",balanced:"type-balanced"};
+    html += `<tr data-country="${c}" style="cursor:pointer;">
+      <td><strong>${d.flag} ${c}</strong></td>
+      <td style="color:var(--muted)">${d.region}</td>
+      <td class="mono">$${d.gdpPc.toLocaleString()}</td>
+      <td class="mono" style="color:var(--green)">${d.growth}%</td>
+      <td class="mono">${d.labor}M</td>
+      <td class="mono">${d.manuf}%</td>
+      <td class="mono">${d.exports}%</td>
+      <td><span class="tbl-pill ${typeColors[d.type]||''}">${d.type}</span></td>
+      <td style="font-size:0.78rem;color:var(--ink3)">${topRCA}</td>
+    </tr>`;
+  });
+  document.getElementById("tableBody").innerHTML = html;
+  document.querySelectorAll("#mainTable tr[data-country]").forEach(row => {
+    row.addEventListener("click", () => {
+      const c = row.dataset.country;
+      switchPage("rca-page");
+      renderAnalysis(c);
+    });
+  });
+}
+document.getElementById("tableSearch").addEventListener("input", e => buildTable(e.target.value));
+buildTable();
+
+// ═══════════════════════════════════════════
+//  PAGE SWITCHING
+// ═══════════════════════════════════════════
+function switchPage(id) {
+  document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+  document.querySelectorAll(".tab-link").forEach(l => {
+    l.classList.toggle("active", l.dataset.page === id);
+  });
+}
+document.querySelectorAll(".tab-link").forEach(l => {
+  l.addEventListener("click", () => switchPage(l.dataset.page));
+});
+
+// Boot with Malawi
+renderAnalysis("Malawi");
 </script>
 </body>
 </html>
